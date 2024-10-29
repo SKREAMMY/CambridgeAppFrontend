@@ -1,0 +1,11 @@
+.App {
+  overflow: hidden;
+}
+
+.notice {
+  background-color: darkslategray;
+  display: flex;
+  justify-content: center;
+  color: white;
+  word-spacing: 0.5rem;
+}

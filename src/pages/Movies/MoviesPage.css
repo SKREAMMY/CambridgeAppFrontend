@@ -1,0 +1,66 @@
+.cinemaInfo {
+    margin: 20px 0px 20px 0px;
+}
+
+
+.movie-image {
+    width: 30vw;
+    height: 60vh;
+
+}
+
+.movie-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: darkslategray; */
+    margin-bottom: 30px;
+    border-radius: 10px;
+    color: black;
+
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    color: darkslategray;
+    font-size: 400px;
+
+}
+
+.modalDescription {
+    color: black;
+}
+
+.card-title {
+    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-left: 10px;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.movie-card img {
+    object-fit: cover;
+    padding: 5px;
+}
+
+.modal-title {
+    font-size: 30px;
+}
+
+.modalImage img {
+    width: 100%;
+}
+
+.modal-header button {
+    justify-content: flex-end;
+}
+
+@media screen and (max-width: 768px) {
+    .movie-card img {
+        object-fit: contain;
+    }
+}

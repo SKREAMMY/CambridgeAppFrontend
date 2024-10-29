@@ -1,0 +1,23 @@
+.linkpage {
+    padding: 10px;
+}
+
+.bin-card {
+
+    align-items: center;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.bin-body {
+    align-items: center;
+    height: 220px;
+}
+
+.icon {
+    font-size: 100px;
+}
+
+.card {
+    height: 20px;
+}
