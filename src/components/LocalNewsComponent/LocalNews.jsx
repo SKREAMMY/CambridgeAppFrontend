@@ -78,7 +78,7 @@ const LocalNews = () => {
                 <div className="col-6">
                   <Link to={news?.link} target="_blank">
                     <img
-                      src={news?.enclosure["@url"]}
+                      src={news?.enclosure}
                       alt=""
                       className="localNewsImage"
                     />
@@ -108,7 +108,7 @@ const LocalNews = () => {
                   <div className="carouselImage">
                     <Link to={carousel[carouselNumber]?.link}>
                       <img
-                        src={carousel[carouselNumber]?.enclosure["@url"]}
+                        src={carousel[carouselNumber]?.enclosure}
                         alt=""
                         className="localNewsImage"
                       />
@@ -140,7 +140,7 @@ const LocalNews = () => {
                     <div className="col-6">
                       <Link to={news?.link} target="_blank">
                         <img
-                          src={news?.enclosure["@url"]}
+                          src={news?.enclosure}
                           alt=""
                           className="localNewsImage"
                         />
@@ -168,7 +168,7 @@ const LocalNews = () => {
                     <div className="col-6">
                       <Link to={news?.link} target="_blank">
                         <img
-                          src={news?.enclosure["@url"]}
+                          src={news?.enclosure}
                           alt=""
                           className="localNewsImage"
                         />
@@ -196,7 +196,7 @@ const LocalNews = () => {
                     <div className="col-6">
                       <Link to={news?.link} target="_blank">
                         <img
-                          src={news?.enclosure["@url"]}
+                          src={news?.enclosure}
                           alt=""
                           className="localNewsImage"
                         />
@@ -227,7 +227,7 @@ const LocalNews = () => {
                     <div className="col-6">
                       <Link to={news?.link} target="_blank">
                         <img
-                          src={news?.enclosure["@url"]}
+                          src={news?.enclosure}
                           alt=""
                           className="localNewsImage"
                         />
@@ -281,7 +281,7 @@ export default LocalNews;
 //             <div class="carousel-item  active">
 //               <Link to={news?.link}>
 //                 <img
-//                   src={news?.enclosure["@url"]}
+//                   src={news?.enclosure}
 //                   class="d-block carousel-item-width"
 //                   alt="..."
 //                   href={news?.link}
@@ -345,7 +345,7 @@ export default LocalNews;
 //               <div className="card-horizontal row d-flex flex-row alignment">
 //                 <div className="col-sm-12 col-md-6 col-lg-6 img-square-wrapper">
 //                   <img
-//                     src={news.enclosure?.["@url"]}
+//                     src={news.enclosure?.}
 //                     className="localNewsImage"
 //                     alt=""
 //                   />
@@ -364,7 +364,7 @@ export default LocalNews;
 
 //             <div class="cardwrapper">
 //               <div class="image">
-//                 <img src={news?.enclosure["@url"]} class="image" />
+//                 <img src={news?.enclosure} class="image" />
 //                 <p className="localNewsTitle titlebackground">
 //                   {news?.title}
 //                 </p>
@@ -396,7 +396,7 @@ export default LocalNews;
 //                   <div className="card-horizontal row d-flex flex-row alignment">
 //                     <div className="col-sm-12 col-md-6 col-lg-6 img-square-wrapper">
 //                       <img
-//                         src={news.enclosure?.["@url"]}
+//                         src={news.enclosure?.}
 //                         className="localNewsImage"
 //                         alt=""
 //                       />

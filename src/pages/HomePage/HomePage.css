@@ -7,15 +7,19 @@
     padding-left: 5px;
 }
 
+#nav-tab>* {
+    margin: 10px;
+}
+
 /* .tab-content {
     background-color: #8697C4;
 } */
 
-.nav-colors {
+/* .nav-colors {
     background-color: darkslategray;
 
-}
+} */
 
-.nav-colors>button {
+/* .nav-colors>button {
     color: black;
-}
+} */

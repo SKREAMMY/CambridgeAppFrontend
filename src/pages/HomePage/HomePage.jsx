@@ -7,48 +7,50 @@ import LocalNews from "../../components/LocalNewsComponent/LocalNews";
 const HomePage = () => {
   return (
     <div className="HomePageContainer ">
-      <nav className="newsNavBar">
-        <div className="nav nav-tabs nav-colors" id="nav-tab" role="tablist">
+      <ul className="nav nav-pills m-3" id="pills-tab" role="tablist">
+        <li className="nav-item" role="presentation">
           <button
             className="nav-link active"
-            id="nav-home-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#local"
+            id="pills-home-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#pills-local"
             type="button"
             role="tab"
-            aria-controls="nav-home"
+            aria-controls="pills-home"
             aria-selected="true"
           >
             Local News
           </button>
+        </li>
+        <li className="nav-item" role="presentation">
           <button
             className="nav-link"
-            id="nav-profile-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#global"
+            id="pills-profile-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#pills-global"
             type="button"
             role="tab"
-            aria-controls="nav-profile"
+            aria-controls="pills-profile"
             aria-selected="false"
           >
             Global News
           </button>
-        </div>
-      </nav>
-      <div className="tab-content" id="nav-tabContent">
+        </li>
+      </ul>
+      <div className="tab-content" id="pills-tabContent">
         <div
           className="tab-pane fade show active"
-          id="local"
+          id="pills-local"
           role="tabpanel"
-          aria-labelledby="nav-home-tab"
+          aria-labelledby="pills-home-tab"
         >
           <LocalNews />
         </div>
         <div
           className="tab-pane fade"
-          id="global"
+          id="pills-global"
           role="tabpanel"
-          aria-labelledby="nav-profile-tab"
+          aria-labelledby="pills-profile-tab"
         >
           <GlobalNews />
         </div>
