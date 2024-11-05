@@ -2,6 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import "./world.css";
+
 const World = () => {
   const [worldStories, setWorldStories] = useState([]);
 
@@ -28,7 +30,11 @@ const World = () => {
           <div className="row localNewsList">
             {worldStories.map((news, i) => (
               <div
-                className="col-lg-4 col-md-12 col-sm-12 allLocalNews"
+                className={
+                  i % 4 === 0
+                    ? "col-lg-4 col-md-12 col-sm-12 allLocalNews background-green"
+                    : "col-lg-4 col-md-12 col-sm-12 allLocalNews"
+                }
                 key={i}
               >
                 <div className="localNewsImageContainer">

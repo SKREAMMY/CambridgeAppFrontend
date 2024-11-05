@@ -83,7 +83,12 @@ const MoviesPage = () => {
                   alt="Card image cap"
                   data-bs-toggle="modal"
                   data-bs-target=".bd-example-modal-lg"
-                  onClick={() => renderdataonModal(data)}
+                  onClick={() => {
+                    {
+                      setDateforModal("");
+                      renderdataonModal(data);
+                    }
+                  }}
                 />
 
                 <div

@@ -2,6 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import "./science.css";
+
 const ScienceComponent = () => {
   const [science, setScience] = useState([]);
 
@@ -26,7 +28,14 @@ const ScienceComponent = () => {
       <div className="row localNewsBody">
         <div className="row localNewsList">
           {science.map((news, i) => (
-            <div className="col-lg-4 col-md-12 col-sm-12 allLocalNews" key={i}>
+            <div
+              className={
+                i % 4 === 0
+                  ? "col-lg-4 col-md-12 col-sm-12 allLocalNews background-green"
+                  : "col-lg-4 col-md-12 col-sm-12 allLocalNews"
+              }
+              key={i}
+            >
               <div className="localNewsImageContainer">
                 <div className="row localImageCard">
                   <div className="col-6">

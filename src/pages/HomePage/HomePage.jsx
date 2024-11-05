@@ -1,7 +1,10 @@
-import React from "react";
+import React, { Suspense } from "react";
 import "./HomePage.css";
 import { Link } from "react-router-dom";
-import GlobalNews from "../../components/GlobalNewsComponent/GlobalNews";
+// import GlobalNews from "../../components/GlobalNewsComponent/GlobalNews";
+const GlobalNews = React.lazy(() =>
+  import("../../components/GlobalNewsComponent/GlobalNews")
+);
 import LocalNews from "../../components/LocalNewsComponent/LocalNews";
 
 const HomePage = () => {
@@ -52,7 +55,9 @@ const HomePage = () => {
           role="tabpanel"
           aria-labelledby="pills-profile-tab"
         >
-          <GlobalNews />
+          <Suspense fallback={<span>Loading...</span>}>
+            <GlobalNews />
+          </Suspense>
         </div>
       </div>
     </div>

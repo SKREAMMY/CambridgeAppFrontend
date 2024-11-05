@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import "./health.css";
+
 const HealthComponent = () => {
   const [health, setHealth] = useState([]);
 
@@ -26,7 +28,11 @@ const HealthComponent = () => {
           <div className="row localNewsList">
             {health.map((news, i) => (
               <div
-                className="col-lg-4 col-md-12 col-sm-12 allLocalNews"
+                className={
+                  i % 4 === 0
+                    ? "col-lg-4 col-md-12 col-sm-12 allLocalNews background-green"
+                    : "col-lg-4 col-md-12 col-sm-12 allLocalNews"
+                }
                 key={i}
               >
                 <div className="localNewsImageContainer">

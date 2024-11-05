@@ -44,11 +44,11 @@ const Header = () => {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-bgcolor">
-        {/* <Link to={"/home"}> */}
-        <a className="navbar-brand brandName nav-color" href="/">
-          What's up Cambridge
-        </a>
-        {/* </Link> */}
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <a className="navbar-brand brandName nav-color">
+            What's up Cambridge
+          </a>
+        </Link>
 
         <button
           className="navbar-toggler menu-toggler"
@@ -70,19 +70,19 @@ const Header = () => {
             >
               <div className="row navbarContent">
                 <div className="col-4">
-                  <a className="nav-item nav-link nav-color" href="/">
-                    Home
-                  </a>
+                  <Link to="/" style={{ textDecoration: "none" }}>
+                    <a className="nav-item nav-link nav-color">Home</a>
+                  </Link>
                 </div>
                 <div className="col-4">
-                  <a className="nav-item nav-link nav-color" href="/movies">
-                    Movies
-                  </a>
+                  <Link to="/movies" style={{ textDecoration: "none" }}>
+                    <a className="nav-item nav-link nav-color">Movies</a>
+                  </Link>
                 </div>
                 <div className="col-4">
-                  <a className="nav-item nav-link nav-color" href="/links">
-                    Links
-                  </a>
+                  <Link to="/links" style={{ textDecoration: "none" }}>
+                    <a className="nav-item nav-link nav-color">Links</a>
+                  </Link>
                 </div>
               </div>
             </div>

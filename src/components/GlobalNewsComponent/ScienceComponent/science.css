@@ -1,0 +1,9 @@
+.background-green {
+    background-color: darkslategrey;
+    color: gainsboro;
+
+}
+
+.background-green .localNewsDescription {
+    color: white;
+}

@@ -2,6 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import "./business.css";
+
 const BusinessComponent = () => {
   const [business, setBusiness] = useState([]);
 
@@ -25,9 +27,13 @@ const BusinessComponent = () => {
       <div className="container-fluid LocalNews">
         <div className="row localNewsBody">
           <div className="row localNewsList">
-            {business.slice(15, business.length).map((news, i) => (
+            {business.map((news, i) => (
               <div
-                className="col-lg-4 col-md-12 col-sm-12 allLocalNews"
+                className={
+                  i % 4 === 0
+                    ? "col-lg-4 col-md-12 col-sm-12 allLocalNews background-green"
+                    : "col-lg-4 col-md-12 col-sm-12 allLocalNews"
+                }
                 key={i}
               >
                 <div className="localNewsImageContainer">

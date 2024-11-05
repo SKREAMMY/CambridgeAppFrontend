@@ -8,7 +8,7 @@ const TopStories = () => {
 
   useEffect(() => {
     async function fetchGlobalTopStories() {
-      await fetch(import.meta.env.VITE_APP_BASEURL + "news/global/world")
+      await fetch(import.meta.env.VITE_APP_BASEURL + "news/global/topStories")
         .then((response) => {
           if (response.ok) {
             return response.json();
@@ -26,8 +26,15 @@ const TopStories = () => {
     <div className="container-fluid LocalNews">
       <div className="row localNewsBody">
         <div className="row localNewsList">
-          {topStories.slice(15, topStories.length).map((news, i) => (
-            <div className="col-lg-4 col-md-12 col-sm-12 allLocalNews" key={i}>
+          {topStories.map((news, i) => (
+            <div
+              className={
+                i % 4 === 0
+                  ? "col-lg-4 col-md-12 col-sm-12 allLocalNews background-green"
+                  : "col-lg-4 col-md-12 col-sm-12 allLocalNews"
+              }
+              key={i}
+            >
               <div className="localNewsImageContainer">
                 <div className="row localImageCard">
                   <div className="col-6">

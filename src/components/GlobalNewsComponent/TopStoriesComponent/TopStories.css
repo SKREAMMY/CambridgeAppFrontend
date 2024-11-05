@@ -28,6 +28,16 @@
     margin-bottom: 20px;
 }
 
+.background-green {
+    background-color: darkslategrey;
+    color: gainsboro;
+
+}
+
+.background-green .localNewsDescription {
+    color: white;
+}
+
 .alignment {
     justify-content: center;
     align-items: center;
