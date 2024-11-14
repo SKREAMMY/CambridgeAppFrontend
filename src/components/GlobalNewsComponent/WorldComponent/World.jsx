@@ -3,9 +3,37 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import "./world.css";
+import { useDispatch, useSelector } from "react-redux";
+import { setResults } from "../../../SearchSlice/searchSlice";
 
 const World = () => {
   const [worldStories, setWorldStories] = useState([]);
+  const dispatch = useDispatch();
+
+  const search = useSelector((state) => state.search.query);
+  console.log("search from world ", search);
+
+  useEffect(() => {
+    const ConvertToLowerCase = (data) => {
+      return data?.toLowerCase();
+    };
+
+    const tempdata = worldStories.filter((data) => {
+      let title = ConvertToLowerCase(data.title);
+      let description = ConvertToLowerCase(data.description);
+      let searchableString = ConvertToLowerCase(search);
+
+      let flag =
+        title?.includes(searchableString) ||
+        description?.includes(searchableString);
+      if (flag) {
+        return data;
+      }
+    });
+    console.log("results from world ", tempdata);
+
+    tempdata.map((data) => dispatch(setResults(data)));
+  }, [search]);
 
   useEffect(() => {
     async function fetchGlobalTopStories() {

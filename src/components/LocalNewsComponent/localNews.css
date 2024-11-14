@@ -103,24 +103,25 @@
 
 }
 
-.carouselNavigationLeft>span {
+.carouselNavigationLeft>i {
     cursor: pointer;
     position: absolute;
     top: 50%;
     left: 0;
     padding: 15px;
-    background-color: darkslategray;
-    border-radius: 0px 20px 20px 0px;
+    font-size: 7vh;
+
+
 }
 
-.carouselNavigationRight>span {
+.carouselNavigationRight>i {
     cursor: pointer;
     position: absolute;
     top: 50%;
     right: 0;
     padding: 15px;
-    background-color: darkslategray;
-    border-radius: 20px 0px 0px 20px;
+    font-size: 7vh;
+
 }
 
 .carouselItem {
@@ -171,13 +172,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 .localNewsCards {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+}
+
+.localNewsImageContainer {
+    padding: 20px 0px 20px 0px;
 }
 
 .localNewsDescription {
@@ -206,7 +212,7 @@
 
 .localNewsList {
     margin-bottom: 30px;
-    padding: 20px;
+
     display: flex;
     justify-content: center;
 }

@@ -1,0 +1,19 @@
+.NewsImageContainer {
+    height: 20vh;
+    width: 40vw;
+}
+
+.searchImageCard {
+    height: 20vh;
+    width: 40vw;
+}
+
+.searchImageCard img {
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.NewsImageContainer {
+    margin-bottom: 20px;
+}

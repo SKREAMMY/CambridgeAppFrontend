@@ -5,7 +5,10 @@
 .notice {
   background-color: darkslategray;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
   color: white;
   word-spacing: 0.5rem;
+  padding: 10px;
+
 }

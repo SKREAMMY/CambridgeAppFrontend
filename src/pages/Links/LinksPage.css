@@ -18,6 +18,9 @@
     font-size: 100px;
 }
 
-.card {
-    height: 20px;
+.linkName {
+    font-style: italic;
+    text-decoration: none;
+    color: darkslategray;
+    padding: 20px 0 20px 0;
 }

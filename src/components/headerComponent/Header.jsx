@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
-import { searchString } from "../../SearchSlice/searchSlice";
+import { clearResults, searchString } from "../../SearchSlice/searchSlice";
 import { useDispatch } from "react-redux";
 import weather_logo from "../../assets/weather_icon.png";
 
@@ -33,7 +33,11 @@ const Header = () => {
   };
 
   const handleEvent = (e) => {
-    dispatch(searchString(e));
+    if (e === "") {
+      dispatch(clearResults());
+    } else {
+      dispatch(searchString(e));
+    }
   };
 
   useEffect(() => {
@@ -44,10 +48,12 @@ const Header = () => {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-bgcolor">
-        <Link to="/" style={{ textDecoration: "none" }}>
-          <a className="navbar-brand brandName nav-color">
-            What's up Cambridge
-          </a>
+        <Link
+          className="navbar-brand brandName nav-color"
+          to="/"
+          style={{ textDecoration: "none" }}
+        >
+          What's up Cambridge
         </Link>
 
         <button
@@ -70,18 +76,30 @@ const Header = () => {
             >
               <div className="row navbarContent">
                 <div className="col-4">
-                  <Link to="/" style={{ textDecoration: "none" }}>
-                    <a className="nav-item nav-link nav-color">Home</a>
+                  <Link
+                    to="/"
+                    className="nav-item nav-link nav-color"
+                    style={{ textDecoration: "none" }}
+                  >
+                    Home
                   </Link>
                 </div>
                 <div className="col-4">
-                  <Link to="/movies" style={{ textDecoration: "none" }}>
-                    <a className="nav-item nav-link nav-color">Movies</a>
+                  <Link
+                    to="/movies"
+                    className="nav-item nav-link nav-color"
+                    style={{ textDecoration: "none" }}
+                  >
+                    Movies
                   </Link>
                 </div>
                 <div className="col-4">
-                  <Link to="/links" style={{ textDecoration: "none" }}>
-                    <a className="nav-item nav-link nav-color">Links</a>
+                  <Link
+                    to="/links"
+                    className="nav-item nav-link nav-color"
+                    style={{ textDecoration: "none" }}
+                  >
+                    Links
                   </Link>
                 </div>
               </div>

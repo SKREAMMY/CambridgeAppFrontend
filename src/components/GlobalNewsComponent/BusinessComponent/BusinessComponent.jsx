@@ -1,11 +1,38 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { setResults } from "../../../SearchSlice/searchSlice";
 
 import "./business.css";
+import { useDispatch, useSelector } from "react-redux";
 
 const BusinessComponent = () => {
   const [business, setBusiness] = useState([]);
+  const dispatch = useDispatch();
+  const search = useSelector((state) => state.search.query);
+  console.log("search from business ", search);
+
+  useEffect(() => {
+    const ConvertToLowerCase = (data) => {
+      return data?.toLowerCase();
+    };
+
+    const tempdata = business.filter((data) => {
+      let title = ConvertToLowerCase(data.title);
+      let description = ConvertToLowerCase(data.description);
+      let searchableString = ConvertToLowerCase(search);
+
+      let flag =
+        title?.includes(searchableString) ||
+        description?.includes(searchableString);
+      if (flag) {
+        return data;
+      }
+    });
+    console.log("results from business ", tempdata);
+
+    tempdata.map((data) => dispatch(setResults(data)));
+  }, [search]);
 
   useEffect(() => {
     async function fetchGlobalBusiness() {

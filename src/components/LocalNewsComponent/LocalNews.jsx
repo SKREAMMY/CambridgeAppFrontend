@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./localNews.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { clearResults, setResults } from "../../SearchSlice/searchSlice";
 
 const LocalNews = () => {
   const [localNews, setlocalNews] = useState([]);
+  const dispatch = useDispatch();
+  const search = useSelector((state) => state.search.query);
+  const finalResults = useSelector((state) => state.search.results);
 
-  const search = useSelector((state) => state.search);
-  const [filteredresult, setFilteredResult] = useState([]);
   const [carousel, setCarousel] = useState([]);
   const [carouselNumber, setCarouselNumber] = useState(0);
 
@@ -28,28 +30,27 @@ const LocalNews = () => {
   }, []);
 
   useEffect(() => {
-    const ConvertToLoweCase = (data) => {
+    console.log("triggered", search);
+
+    const ConvertToLowerCase = (data) => {
       return data?.toLowerCase();
     };
 
     const tempdata = localNews.filter((data) => {
-      let keywords = ConvertToLoweCase(data.mediaKeywords);
-      let title = ConvertToLoweCase(data.title);
-      let description = ConvertToLoweCase(data.description);
-      let searchableString = ConvertToLoweCase(search.state);
-      searchableString = searchableString?.toLowerCase();
-
-      // console.log(keywords, searchableString);
+      let title = ConvertToLowerCase(data.title);
+      let description = ConvertToLowerCase(data.description);
+      let searchableString = ConvertToLowerCase(search);
 
       let flag =
-        keywords?.includes(searchableString) ||
         title?.includes(searchableString) ||
         description?.includes(searchableString);
       if (flag) {
         return data;
       }
     });
-    setFilteredResult(tempdata);
+    console.log("temp data is ", tempdata);
+    dispatch(clearResults());
+    tempdata.map((data) => dispatch(setResults(data)));
   }, [search]);
 
   function increaseCarouselNumber() {
@@ -70,185 +71,157 @@ const LocalNews = () => {
 
   return (
     <div className="container-fluid LocalNews">
-      {search.state != 0 && (
-        <div>
-          {filteredresult.map((news, i) => (
-            <div className="localNewsImageContainer" key={i}>
-              <div className="row localImageCard">
-                <div className="col-6">
-                  <Link to={news?.link} target="_blank">
+      <div className="row localNewsBody">
+        <div className="row carouselAndLocalNews">
+          <div className="col-lg-8 col-md-12 col-sm-12">
+            <div className="localCardCarousel">
+              <div className="carouselItem">
+                <div className="carouselImage">
+                  <Link to={carousel[carouselNumber]?.link}>
                     <img
-                      src={news?.enclosure}
+                      src={carousel[carouselNumber]?.enclosure}
                       alt=""
                       className="localNewsImage"
                     />
                   </Link>
+                  <div className="carouselNavigationLeft">
+                    <i
+                      className="fa fa-caret-left"
+                      onClick={increaseCarouselNumber}
+                    ></i>
+                  </div>
+                  <div className="carouselNavigationRight">
+                    <i
+                      className="fa fa-caret-right"
+                      onClick={decreaseCarouselNumber}
+                    ></i>
+                  </div>
                 </div>
-                <div className="col-6">
+
+                <div className="carouselDescription">
                   <a
-                    className="localNewsDescription"
-                    href={news?.link}
+                    className="localNewsDescriptionWhite"
+                    href={carousel[carouselNumber]?.link}
                     target="_blank"
                   >
-                    {news?.title}
+                    {carousel[carouselNumber]?.description}
                   </a>
                 </div>
               </div>
             </div>
-          ))}
-        </div>
-      )}
-
-      {!search.state && (
-        <div className="row localNewsBody">
-          <div className="row carouselAndLocalNews">
-            <div className="col-lg-8 col-md-12 col-sm-12">
-              <div className="localCardCarousel">
-                <div className="carouselItem">
-                  <div className="carouselImage">
-                    <Link to={carousel[carouselNumber]?.link}>
+          </div>
+          <div className="col-lg-4 col-sm-12 col-md-12 localNewsCards">
+            {localNews.slice(5, 9).map((news, i) => (
+              <div className="localNewsImageContainer" key={i}>
+                <div className="row localImageCard">
+                  <div className="col-6">
+                    <Link to={news?.link} target="_blank">
                       <img
-                        src={carousel[carouselNumber]?.enclosure}
+                        src={news?.enclosure}
                         alt=""
                         className="localNewsImage"
                       />
                     </Link>
-                    <div className="carouselNavigationLeft">
-                      <span onClick={increaseCarouselNumber}>Prev</span>
-                    </div>
-                    <div className="carouselNavigationRight">
-                      <span onClick={decreaseCarouselNumber}>Next</span>
-                    </div>
                   </div>
-
-                  <div className="carouselDescription">
+                  <div className="col-6">
                     <a
-                      className="localNewsDescriptionWhite"
-                      href={carousel[carouselNumber]?.link}
+                      className="localNewsDescription"
+                      href={news?.link}
                       target="_blank"
                     >
-                      {carousel[carouselNumber]?.description}
+                      {news?.title}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="row localNewsList">
+          {localNews.slice(9, 11).map((news, i) => (
+            <div className="col-lg-6 col-md-12 col-sm-12" key={i}>
+              <div className="localNewsImageContainer">
+                <div className="row localImageCard">
+                  <div className="col-6">
+                    <Link to={news?.link} target="_blank">
+                      <img
+                        src={news?.enclosure}
+                        alt=""
+                        className="localNewsImage"
+                      />
+                    </Link>
+                  </div>
+                  <div className="col-6">
+                    <a
+                      className="localNewsDescription"
+                      href={news?.link}
+                      target="_blank"
+                    >
+                      {news?.title}
                     </a>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="col-lg-4 col-sm-12 col-md-12 localNewsCards">
-              {localNews.slice(5, 9).map((news, i) => (
-                <div className="localNewsImageContainer" key={i}>
-                  <div className="row localImageCard">
-                    <div className="col-6">
-                      <Link to={news?.link} target="_blank">
-                        <img
-                          src={news?.enclosure}
-                          alt=""
-                          className="localNewsImage"
-                        />
-                      </Link>
-                    </div>
-                    <div className="col-6">
-                      <a
-                        className="localNewsDescription"
-                        href={news?.link}
-                        target="_blank"
-                      >
-                        {news?.title}
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="row localNewsList">
-            {localNews.slice(9, 12).map((news, i) => (
-              <div className="col-lg-4 col-md-12 col-sm-12" key={i}>
-                <div className="localNewsImageContainer">
-                  <div className="row localImageCard">
-                    <div className="col-6">
-                      <Link to={news?.link} target="_blank">
-                        <img
-                          src={news?.enclosure}
-                          alt=""
-                          className="localNewsImage"
-                        />
-                      </Link>
-                    </div>
-                    <div className="col-6">
-                      <a
-                        className="localNewsDescription"
-                        href={news?.link}
-                        target="_blank"
-                      >
-                        {news?.title}
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="row localNewsListmid">
-            {localNews.slice(13, 15).map((news, i) => (
-              <div className="col-lg-6 col-md-12 col-sm-12" key={i}>
-                <div className="localNewsImageContainer">
-                  <div className="row localImageCard">
-                    <div className="col-6">
-                      <Link to={news?.link} target="_blank">
-                        <img
-                          src={news?.enclosure}
-                          alt=""
-                          className="localNewsImage"
-                        />
-                      </Link>
-                    </div>
-                    <div className="col-6">
-                      <a
-                        className="localNewsDescriptionWhite"
-                        href={news?.link}
-                        target="_blank"
-                      >
-                        {news?.title}
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="row localNewsList">
-            {localNews.slice(15, localNews.length).map((news, i) => (
-              <div
-                className="col-lg-4 col-md-12 col-sm-12 allLocalNews"
-                key={i}
-              >
-                <div className="localNewsImageContainer">
-                  <div className="row localImageCard">
-                    <div className="col-6">
-                      <Link to={news?.link} target="_blank">
-                        <img
-                          src={news?.enclosure}
-                          alt=""
-                          className="localNewsImage"
-                        />
-                      </Link>
-                    </div>
-                    <div className="col-6">
-                      <a
-                        className="localNewsDescription"
-                        href={news?.link}
-                        target="_blank"
-                      >
-                        {news?.title}
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          ))}
         </div>
-      )}
+        <div className="row localNewsListmid">
+          {localNews.slice(11, 13).map((news, i) => (
+            <div className="col-lg-6 col-md-12 col-sm-12" key={i}>
+              <div className="localNewsImageContainer">
+                <div className="row localImageCard">
+                  <div className="col-6">
+                    <Link to={news?.link} target="_blank">
+                      <img
+                        src={news?.enclosure}
+                        alt=""
+                        className="localNewsImage"
+                      />
+                    </Link>
+                  </div>
+                  <div className="col-6">
+                    <a
+                      className="localNewsDescriptionWhite"
+                      href={news?.link}
+                      target="_blank"
+                    >
+                      {news?.title}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="row localNewsList">
+          {localNews.slice(13, localNews.length).map((news, i) => (
+            <div className="col-lg-6 col-md-12 col-sm-12 allLocalNews" key={i}>
+              <div className="localNewsImageContainer">
+                <div className="row localImageCard">
+                  <div className="col-6">
+                    <Link to={news?.link} target="_blank">
+                      <img
+                        src={news?.enclosure}
+                        alt=""
+                        className="localNewsImage"
+                      />
+                    </Link>
+                  </div>
+                  <div className="col-6">
+                    <a
+                      className="localNewsDescription"
+                      href={news?.link}
+                      target="_blank"
+                    >
+                      {news?.title}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,11 +1,39 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setResults } from "../../../SearchSlice/searchSlice";
+
 import { Link } from "react-router-dom";
 
 import "./science.css";
 
 const ScienceComponent = () => {
   const [science, setScience] = useState([]);
+  const dispatch = useDispatch();
+  const search = useSelector((state) => state.search.query);
+  console.log("search from science ", search);
+
+  useEffect(() => {
+    const ConvertToLowerCase = (data) => {
+      return data?.toLowerCase();
+    };
+
+    const tempdata = science.filter((data) => {
+      let title = ConvertToLowerCase(data.title);
+      let description = ConvertToLowerCase(data.description);
+      let searchableString = ConvertToLowerCase(search);
+
+      let flag =
+        title?.includes(searchableString) ||
+        description?.includes(searchableString);
+      if (flag) {
+        return data;
+      }
+    });
+    console.log("results from science ", tempdata);
+
+    tempdata.map((data) => dispatch(setResults(data)));
+  }, [search]);
 
   useEffect(() => {
     async function fetchGlobalHealth() {

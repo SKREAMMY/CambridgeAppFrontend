@@ -77,19 +77,21 @@ const MoviesPage = () => {
               key={data["_id"]}
             >
               <div className="movie-card">
-                <img
-                  className="card-img-top movie-image"
-                  src={data["posterImageSrc"]}
-                  alt="Card image cap"
-                  data-bs-toggle="modal"
-                  data-bs-target=".bd-example-modal-lg"
-                  onClick={() => {
-                    {
-                      setDateforModal("");
-                      renderdataonModal(data);
-                    }
-                  }}
-                />
+                <div className="image-card">
+                  <img
+                    className="card-img-top movie-image"
+                    src={data["posterImageSrc"]}
+                    alt="Card image cap"
+                    data-bs-toggle="modal"
+                    data-bs-target=".bd-example-modal-lg"
+                    onClick={() => {
+                      {
+                        setDateforModal("");
+                        renderdataonModal(data);
+                      }
+                    }}
+                  />
+                </div>
 
                 <div
                   className="modal fade bd-example-modal-lg"
@@ -187,7 +189,19 @@ const MoviesPage = () => {
                   </div>
                 </div>
                 <div className="card-body d-flex">
-                  <h5 className="card-title">{data["filmTitle"]}</h5>
+                  <h5
+                    className="movie-title"
+                    data-bs-toggle="modal"
+                    data-bs-target=".bd-example-modal-lg"
+                    onClick={() => {
+                      {
+                        setDateforModal("");
+                        renderdataonModal(data);
+                      }
+                    }}
+                  >
+                    {data["filmTitle"]}
+                  </h5>
                 </div>
               </div>
             </div>

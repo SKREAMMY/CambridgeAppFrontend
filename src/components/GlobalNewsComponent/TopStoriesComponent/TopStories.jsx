@@ -2,9 +2,36 @@ import React, { useEffect, useState } from "react";
 // const cronjob = require("node-cron");
 import "./TopStories.css";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setResults } from "../../../SearchSlice/searchSlice";
 
 const TopStories = () => {
   const [topStories, setTopStories] = useState([]);
+  const dispatch = useDispatch();
+  const search = useSelector((state) => state.search.query);
+  console.log("search from topstories ", search);
+
+  useEffect(() => {
+    const ConvertToLowerCase = (data) => {
+      return data?.toLowerCase();
+    };
+
+    const tempdata = topStories.filter((data) => {
+      let title = ConvertToLowerCase(data.title);
+      let description = ConvertToLowerCase(data.description);
+      let searchableString = ConvertToLowerCase(search);
+
+      let flag =
+        title?.includes(searchableString) ||
+        description?.includes(searchableString);
+      if (flag) {
+        return data;
+      }
+    });
+    console.log("results from top stories ", tempdata);
+
+    tempdata.map((data) => dispatch(setResults(data)));
+  }, [search]);
 
   useEffect(() => {
     async function fetchGlobalTopStories() {

@@ -7,9 +7,14 @@
     align-items: center;
 }
 
+.navbar-nav {
+    padding: 0px;
+}
+
+
 
 .searchInput {
-    width: 100%;
+    width: 80%;
 }
 
 .loginButton {
