@@ -3,12 +3,9 @@
     width: 100%;
 }
 
-
-
 .img-square-wrapper {
     height: 100%;
 }
-
 
 
 .localNewsCard {
@@ -85,11 +82,12 @@
     flex-direction: column;
     gap: 20px;
 
+}
 
 
 
-
-
+.carouselItem {
+    height: 100%;
 }
 
 .content:hover {
@@ -196,6 +194,7 @@
     text-decoration: none;
     color: white;
     font-weight: bold;
+    font-size: 18px;
 }
 
 
@@ -211,16 +210,23 @@
 }
 
 .localNewsList {
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
 
     display: flex;
     justify-content: center;
 }
 
 .allLocalNews {
-    padding: 20px;
+    /* padding: 20px; */
 }
 
+.flex-grow-8 {
+    flex: 8;
+}
+
+.flex-grow-2 {
+    flex: 2;
+}
 
 
 @media only screen and (max-width: 768px) {

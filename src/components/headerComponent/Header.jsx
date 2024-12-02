@@ -1,14 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
 import { clearResults, searchString } from "../../SearchSlice/searchSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import weather_logo from "../../assets/weather_icon.png";
 
 const Header = () => {
   // A state to maintain the weather status
   const [weather, setWeather] = useState(0);
   const dispatch = useDispatch();
+  const query = useSelector((state) => state.search.query);
+  const searchQuery = useRef("");
+  const [inputSearch, setInputSearch] = useState("");
+  console.log("header re rendering....");
 
   // A callback function to get the current weather using OpenWeather API
   const getWeather = async () => {
@@ -35,10 +39,33 @@ const Header = () => {
   const handleEvent = (e) => {
     if (e === "") {
       dispatch(clearResults());
+      setInputSearch("");
     } else {
+      setInputSearch(e);
       dispatch(searchString(e));
     }
+    // console.log("= search string on handleevent is ", e.target.value);
   };
+
+  const handleSearch = () => {
+    dispatch(searchString(query));
+    // searchQuery.current = "";
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
+
+  const handleClear = (e) => {
+    dispatch(clearResults());
+    setInputSearch("");
+  };
+
+  useEffect(() => {
+    console.log("from head...", query);
+  }, [query]);
 
   useEffect(() => {
     //Initial call to get the weather status while loading the page
@@ -105,23 +132,40 @@ const Header = () => {
               </div>
             </div>
 
-            <div className="searchInput col-lg-4 col-md-8 col-sm-10 ">
+            <div className="searchInput d-flex align-items-center justify-content-center col-lg-5 col-md-8 col-sm-10 ">
               <div className="input-group">
                 <input
                   type="text"
-                  className="form-control"
-                  placeholder="Search here..."
+                  className="inputField"
+                  // ref={searchQuery}
+                  placeholder="search here..."
+                  value={inputSearch}
                   onChange={(e) => handleEvent(e.target.value)}
+                  onKeyDown={(e) => handleKeyDown(e)}
                 />
+                <div className="input-group-append clear">
+                  <button
+                    id="clear_btn"
+                    className="btn clearbutton"
+                    onClick={(e) => handleClear(e)}
+                  >
+                    <i className="fa fa-close" aria-hidden="true"></i>
+                  </button>
+                </div>
+
                 <div className="input-group-append search">
-                  <button id="search_btn" className="btn ">
+                  <button
+                    id="search_btn"
+                    onClick={() => handleSearch()}
+                    className="btn "
+                  >
                     <i className="fa fa-search" aria-hidden="true"></i>
                   </button>
                 </div>
               </div>
             </div>
             <div
-              className="col-lg-4 col-md-4 col-sm-12 d-flex 
+              className="col-lg-3 col-md-4 col-sm-12 d-flex 
                         align-items-left 
                         justify-content-center"
             >

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import "./localNews.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -8,7 +8,6 @@ const LocalNews = () => {
   const [localNews, setlocalNews] = useState([]);
   const dispatch = useDispatch();
   const search = useSelector((state) => state.search.query);
-  const finalResults = useSelector((state) => state.search.results);
 
   const [carousel, setCarousel] = useState([]);
   const [carouselNumber, setCarouselNumber] = useState(0);
@@ -35,6 +34,10 @@ const LocalNews = () => {
     const ConvertToLowerCase = (data) => {
       return data?.toLowerCase();
     };
+
+    if (search === "") {
+      return;
+    }
 
     const tempdata = localNews.filter((data) => {
       let title = ConvertToLowerCase(data.title);
@@ -75,8 +78,8 @@ const LocalNews = () => {
         <div className="row carouselAndLocalNews">
           <div className="col-lg-8 col-md-12 col-sm-12">
             <div className="localCardCarousel">
-              <div className="carouselItem">
-                <div className="carouselImage">
+              <div className="d-flex flex-column carouselItem">
+                <div className="flex-grow-8 carouselImage">
                   <Link to={carousel[carouselNumber]?.link}>
                     <img
                       src={carousel[carouselNumber]?.enclosure}
@@ -98,7 +101,7 @@ const LocalNews = () => {
                   </div>
                 </div>
 
-                <div className="carouselDescription">
+                <div className="flex-grow-2 carouselDescription">
                   <a
                     className="localNewsDescriptionWhite"
                     href={carousel[carouselNumber]?.link}
@@ -111,10 +114,10 @@ const LocalNews = () => {
             </div>
           </div>
           <div className="col-lg-4 col-sm-12 col-md-12 localNewsCards">
-            {localNews.slice(5, 9).map((news, i) => (
+            {localNews.slice(5, 8).map((news, i) => (
               <div className="localNewsImageContainer" key={i}>
                 <div className="row localImageCard">
-                  <div className="col-6">
+                  <div className="col-lg-6 col-md-6 col-sm-12">
                     <Link to={news?.link} target="_blank">
                       <img
                         src={news?.enclosure}
@@ -123,7 +126,7 @@ const LocalNews = () => {
                       />
                     </Link>
                   </div>
-                  <div className="col-6">
+                  <div className="col-lg-6 col-md-6 col-sm-12">
                     <a
                       className="localNewsDescription"
                       href={news?.link}
@@ -138,11 +141,11 @@ const LocalNews = () => {
           </div>
         </div>
         <div className="row localNewsList">
-          {localNews.slice(9, 11).map((news, i) => (
+          {localNews.slice(8, 10).map((news, i) => (
             <div className="col-lg-6 col-md-12 col-sm-12" key={i}>
               <div className="localNewsImageContainer">
                 <div className="row localImageCard">
-                  <div className="col-6">
+                  <div className="col-lg-6 col-md-6 col-sm-12">
                     <Link to={news?.link} target="_blank">
                       <img
                         src={news?.enclosure}
@@ -151,7 +154,7 @@ const LocalNews = () => {
                       />
                     </Link>
                   </div>
-                  <div className="col-6">
+                  <div className="col-lg-6 col-md-6 col-sm-12">
                     <a
                       className="localNewsDescription"
                       href={news?.link}
@@ -166,11 +169,11 @@ const LocalNews = () => {
           ))}
         </div>
         <div className="row localNewsListmid">
-          {localNews.slice(11, 13).map((news, i) => (
+          {localNews.slice(10, 12).map((news, i) => (
             <div className="col-lg-6 col-md-12 col-sm-12" key={i}>
               <div className="localNewsImageContainer">
                 <div className="row localImageCard">
-                  <div className="col-6">
+                  <div className="col-lg-6 col-md-6 col-sm-12">
                     <Link to={news?.link} target="_blank">
                       <img
                         src={news?.enclosure}
@@ -179,7 +182,7 @@ const LocalNews = () => {
                       />
                     </Link>
                   </div>
-                  <div className="col-6">
+                  <div className="col-lg-6 col-md-6 col-sm-12">
                     <a
                       className="localNewsDescriptionWhite"
                       href={news?.link}
@@ -194,11 +197,11 @@ const LocalNews = () => {
           ))}
         </div>
         <div className="row localNewsList">
-          {localNews.slice(13, localNews.length).map((news, i) => (
+          {localNews.slice(12, localNews.length).map((news, i) => (
             <div className="col-lg-6 col-md-12 col-sm-12 allLocalNews" key={i}>
               <div className="localNewsImageContainer">
                 <div className="row localImageCard">
-                  <div className="col-6">
+                  <div className="col-lg-6 col-md-6 col-sm-12">
                     <Link to={news?.link} target="_blank">
                       <img
                         src={news?.enclosure}
@@ -207,7 +210,7 @@ const LocalNews = () => {
                       />
                     </Link>
                   </div>
-                  <div className="col-6">
+                  <div className="col-lg-6 col-md-6 col-sm-12">
                     <a
                       className="localNewsDescription"
                       href={news?.link}

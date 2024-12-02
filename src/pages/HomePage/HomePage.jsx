@@ -8,14 +8,17 @@ import SearchedNews from "../../components/SearchedNewsComponent/SearchedNews";
 
 const HomePage = () => {
   const searchResults = useSelector((state) => state.search.results);
-  const search = useSelector((state) => state.search.results);
+  const query = useSelector((state) => state.search.query);
   console.log("data from search is ", searchResults);
 
-  useEffect(() => {}, [searchResults]);
+  useEffect(() => {
+    console.log("================ data result ================", searchResults);
+    console.log("================ data query ================", query);
+  }, [searchResults, query]);
 
   return (
     <>
-      <SearchedNews />
+      {<SearchedNews />}
 
       <div className="HomePageContainer ">
         {

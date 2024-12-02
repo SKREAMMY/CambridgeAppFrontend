@@ -1,11 +1,10 @@
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useState, useEffect } from "react";
 import "./App.css";
 import Header from "./components/headerComponent/Header";
 import Footer from "./components/footerComponent/Footer";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import HomePage from "./pages/HomePage/HomePage";
-// import MoviesPage from "./pages/Movies/MoviesPage";
-// import LinksPage from "./pages/Links/LinksPage";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Modal, Button } from "react-bootstrap";
 
 const HomePage = React.lazy(() => import("./pages/HomePage/HomePage"));
 const MoviesPage = React.lazy(() => import("./pages/Movies/MoviesPage"));
@@ -14,24 +13,52 @@ const LinksPage = React.lazy(() => import("./pages/Links/LinksPage"));
 import { Provider } from "react-redux";
 import { store } from "./Store/Store";
 
-const OnPageLoad = ({ showNotice, changeNotice }) => {
+// changes to be done
+
+// to put a X button inside search to clear search
+// to create a local storage to put all local news
+// to put news is local storage and with using session storage and run a fetch after a certain period of time
+// make some UI changes on the movies modal regarding show booking
+// when the modal opens in movies page, the UI scrolls back for no reason.
+//
+
+const BannerModal = () => {
+  const [show, setShow] = useState(false);
+
+  // Function to handle closing the banner
+  const handleClose = () => setShow(false);
+
+  // Open the banner on initial page load
+  useEffect(() => {
+    const hasSeenBanner = localStorage.getItem("hasSeenBanner");
+
+    if (!hasSeenBanner) {
+      setShow(true);
+      localStorage.setItem("hasSeenBanner", "true");
+    }
+  }, []);
+
   return (
-    <>
-      {showNotice && (
-        <div className="notice">
-          <span>
-            ***** Some functionalities are yet to be added as this page is
-            currently undergoing development. Thank you for understanding! *****
-          </span>
-          <button
-            className="btn btn-primary"
-            onClick={(e) => changeNotice(false)}
-          >
-            Close
-          </button>
-        </div>
-      )}
-    </>
+    <Modal show={show} onHide={handleClose} centered>
+      <Modal.Header className="bg-info">
+        <Modal.Title>Welcome to Our Website!</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <h4>
+          Some functionalities are yet to be added as this webpage is currently
+          undergoing development. Thank you for understanding!
+        </h4>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button
+          variant="secondary"
+          onClick={handleClose}
+          className="btn btn-warning"
+        >
+          Close
+        </Button>
+      </Modal.Footer>
+    </Modal>
   );
 };
 
@@ -45,8 +72,7 @@ function App() {
   return (
     <>
       <div className="App container">
-        <OnPageLoad showNotice={notice} changeNotice={changeNotice} />
-
+        <BannerModal />
         <Router>
           <Provider store={store}>
             <Header />

@@ -5,16 +5,44 @@
 .navbar-nav {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .navbar-nav {
     padding: 0px;
 }
 
+.inputField {
+    border: none !important;
+    outline: none !important;
+    border-radius: 5px;
+    padding-left: 5px;
+}
+
+.clear {
+    background-color: white;
+
+
+}
+
+button {
+    border: none;
+}
+
+.clearbutton {
+    outline: none !important;
+    border: none !important;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+}
 
 
 .searchInput {
     width: 80%;
+
 }
 
 .loginButton {
@@ -46,6 +74,8 @@
 
 .input-group {
     width: auto;
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
 }
 
 .navbar-bgcolor {

@@ -10,13 +10,13 @@ const LinksPage = () => {
             <div className="card bin-card">
               <div className="card-body d-flex flex-column bin-body">
                 <i className="fa fa-trash fa-bounce icon"></i>
-                {/* <h2>Bin Collection Dates</h2> */}
+                {/* <h4>Bin Collection Dates</h4> */}
                 <a
                   className="linkName"
                   target="_blank"
                   href="https://www.cambridge.gov.uk/check-when-your-bin-will-be-emptied"
                 >
-                  <h2>Bin Collection dates</h2>
+                  <h4>Bin Collection dates</h4>
                 </a>
               </div>
             </div>
@@ -32,7 +32,7 @@ const LinksPage = () => {
                   target="_blank"
                   href="https://www.cambridge.gov.uk/manage-your-council-tax-account-and-check-your-bill"
                 >
-                  <h2>Council Tax account and Bill</h2>
+                  <h4>Council Tax account and Bill</h4>
                 </a>
               </div>
             </div>
@@ -48,7 +48,7 @@ const LinksPage = () => {
                   target="_blank"
                   href="https://www.cambridge.gov.uk/parking"
                 >
-                  <h2>Parking</h2>
+                  <h4>Parking</h4>
                 </a>
               </div>
             </div>
@@ -64,7 +64,7 @@ const LinksPage = () => {
                   target="_blank"
                   href="https://www.cambridge.gov.uk/report-it"
                 >
-                  <h2>Report issues</h2>
+                  <h4>Report issues</h4>
                 </a>
               </div>
             </div>
@@ -80,7 +80,7 @@ const LinksPage = () => {
                   target="_blank"
                   href="https://ip.e-paycapita.com/AIP/itemSelectionPage.do?link=showItemSelectionPage&siteId=85&languageCode=EN&source=AIP"
                 >
-                  <h2>Pay</h2>
+                  <h4>Pay</h4>
                 </a>
               </div>
             </div>
@@ -96,7 +96,7 @@ const LinksPage = () => {
                   target="_blank"
                   href="https://applications.greatercambridgeplanning.org/online-applications/"
                 >
-                  <h2>Check Planning Applications</h2>
+                  <h4>Check Planning Applications</h4>
                 </a>
               </div>
             </div>

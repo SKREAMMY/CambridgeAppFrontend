@@ -17,6 +17,10 @@ const BusinessComponent = () => {
       return data?.toLowerCase();
     };
 
+    if (search === "") {
+      return;
+    }
+
     const tempdata = business.filter((data) => {
       let title = ConvertToLowerCase(data.title);
       let description = ConvertToLowerCase(data.description);
@@ -65,7 +69,7 @@ const BusinessComponent = () => {
               >
                 <div className="localNewsImageContainer">
                   <div className="row localImageCard">
-                    <div className="col-6">
+                    <div className="col-lg-6 col-md-6 col-sm-12">
                       <Link to={news?.link} target="_blank">
                         <img
                           src={news?.mediaThumbnail["url"]}
@@ -74,7 +78,7 @@ const BusinessComponent = () => {
                         />
                       </Link>
                     </div>
-                    <div className="col-6">
+                    <div className="col-lg-6 col-md-6 col-sm-12">
                       <a
                         className="localNewsDescription"
                         href={news?.link}

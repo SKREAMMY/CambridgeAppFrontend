@@ -3,6 +3,8 @@ import "./MoviesPage.css";
 import SimpleDateTime from "react-simple-timestamp-to-date";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { setMovieResults } from "../../SearchSlice/searchSlice";
 
 const MoviesPage = () => {
   let navigate = useNavigate();
@@ -11,6 +13,12 @@ const MoviesPage = () => {
   const [datelists, setDateLists] = useState([]);
   const [modalData, setModalData] = useState({});
   const [dateforModal, setDateforModal] = useState("");
+  const dispatch = useDispatch();
+
+  const search = useSelector((state) => state.search.query);
+  const searchedMovies = useSelector((state) => state.search.movieResults);
+  console.log("query from movies ", search);
+  console.log("searched movies results ", searchedMovies);
 
   const renderdataonModal = (e) => {
     setModalData(e);
@@ -33,6 +41,32 @@ const MoviesPage = () => {
   };
 
   useEffect(() => {
+    const ConvertToLowerCase = (data) => {
+      return data?.toLowerCase();
+    };
+
+    if (search === "") {
+      return;
+    }
+
+    const tempdata = vueData.filter((data) => {
+      let filmTitle = ConvertToLowerCase(data.filmTitle);
+      let searchableString = ConvertToLowerCase(search);
+
+      let flag = filmTitle?.includes(searchableString);
+      if (flag) {
+        console.log("film title ", filmTitle, searchableString);
+
+        return data;
+      }
+    });
+    console.log("results from movies ", tempdata);
+
+    // tempdata.map((data) => dispatch(setMovieResults(data)));
+    dispatch(setMovieResults(tempdata));
+  }, [search]);
+
+  useEffect(() => {
     const getVueData = async () => {
       await fetch(import.meta.env.VITE_APP_BASEURL + "movies/vue")
         .then((response) => {
@@ -45,23 +79,55 @@ const MoviesPage = () => {
         });
     };
 
-    const getLightsData = async () => {
-      await fetch(import.meta.env.VITE_APP_BASEURL + "movies/lights")
-        .then((response) => {
-          if (response.ok) {
-            return response.json();
-          }
-        })
-        .then((jsondata) => {
-          console.log("lights data ", jsondata);
-        });
-    };
-
     getVueData();
   }, []);
 
   return (
     <>
+      {searchedMovies.length > 0 && (
+        <div className="row">
+          {searchedMovies.map((data) => (
+            <div
+              className="vuedatacard col-lg-3 col-md-6 col-sm-6"
+              key={data["_id"]}
+            >
+              <div className="movie-card">
+                <div className="image-card">
+                  <img
+                    className="card-img-top movie-image"
+                    src={data["posterImageSrc"]}
+                    alt="Card image cap"
+                    data-bs-toggle="modal"
+                    data-bs-target=".bd-example-modal-lg"
+                    onClick={() => {
+                      {
+                        setDateforModal("");
+                        renderdataonModal(data);
+                      }
+                    }}
+                  />
+                </div>
+
+                <div className="card-body d-flex">
+                  <h5
+                    className="movie-title"
+                    data-bs-toggle="modal"
+                    data-bs-target=".bd-example-modal-lg"
+                    onClick={() => {
+                      {
+                        setDateforModal("");
+                        renderdataonModal(data);
+                      }
+                    }}
+                  >
+                    {data["filmTitle"]}
+                  </h5>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
       <div className="movietype d-flex flex-row">
         <div className="cinemaInfo">
           Displaying all the movies of{" "}

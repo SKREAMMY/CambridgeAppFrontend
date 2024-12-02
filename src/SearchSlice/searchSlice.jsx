@@ -4,30 +4,45 @@ import { act } from "react";
 let initialState = {
   query: "",
   results: [],
+  movieResults: [],
 };
 const searchSlice = createSlice({
   name: "search",
   initialState,
   reducers: {
     searchString(state, action) {
-      state.query = action.payload;
+      return {
+        ...state,
+        query: action.payload,
+      };
+      // state.query = action.payload;
     },
     setResults(state, action) {
-      // console.log("recieved data array ", action.payload);
-
-      // state = {
-      //   ...state,
-      //   results: state.results.concat(action.payload),
-      // };
-      state.results.push(action.payload);
-
-      console.log("------ results ----- ", state);
+      // console.log(action.payload);
+      return {
+        ...state,
+        results: [...state.results, action.payload],
+      };
+      // state.results.push(action.payload);
+    },
+    setMovieResults(state, action) {
+      return {
+        ...state,
+        movieResults: [...action.payload],
+      };
     },
     clearResults(state) {
-      state.results = [];
+      return {
+        ...state,
+        results: [],
+        query: "",
+        movieResults: [],
+      };
+      // state.results = [];
     },
   },
 });
 
-export const { searchString, setResults, clearResults } = searchSlice.actions;
+export const { searchString, setResults, clearResults, setMovieResults } =
+  searchSlice.actions;
 export default searchSlice.reducer;

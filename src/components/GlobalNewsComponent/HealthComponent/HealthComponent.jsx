@@ -17,6 +17,10 @@ const HealthComponent = () => {
       return data?.toLowerCase();
     };
 
+    if (search === "") {
+      return;
+    }
+
     const tempdata = health.filter((data) => {
       let title = ConvertToLowerCase(data.title);
       let description = ConvertToLowerCase(data.description);
@@ -65,7 +69,7 @@ const HealthComponent = () => {
               >
                 <div className="localNewsImageContainer">
                   <div className="row localImageCard">
-                    <div className="col-6">
+                    <div className="col-lg-6 col-md-6 col-sm-12">
                       <Link to={news?.link} target="_blank">
                         <img
                           src={news?.mediaThumbnail["url"]}
@@ -74,7 +78,7 @@ const HealthComponent = () => {
                         />
                       </Link>
                     </div>
-                    <div className="col-6">
+                    <div className="col-lg-6 col-md-6 col-sm-12s">
                       <a
                         className="localNewsDescription"
                         href={news?.link}
