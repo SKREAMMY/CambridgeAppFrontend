@@ -61,9 +61,9 @@ const BusinessComponent = () => {
             {business.map((news, i) => (
               <div
                 className={
-                  i % 4 === 0
-                    ? "col-lg-4 col-md-12 col-sm-12 allLocalNews background-green"
-                    : "col-lg-4 col-md-12 col-sm-12 allLocalNews"
+                  i % 3 === 0
+                    ? "col-lg-6 col-md-12 col-sm-12 allLocalNews background-green"
+                    : "col-lg-6 col-md-12 col-sm-12 allLocalNews"
                 }
                 key={i}
               >
