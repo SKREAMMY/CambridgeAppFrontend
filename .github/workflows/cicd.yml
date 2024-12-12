@@ -36,7 +36,7 @@ jobs:
         run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
 
       - name: Build docker image
-        run: docker build -t ${{secrets.DOCKER_USERNAME}}/cambridgeappfrontendimage:latest .
+        run: docker build -t ${{secrets.DOCKER_USERNAME}}/cambridgeappfrontendimage .
 
       - name: Push the image to the dockerhub
         run: |
@@ -57,4 +57,4 @@ jobs:
       - name: Deploy Docker image
         run: |
           docker pull ${{secrets.DOCKER_USERNAME}}/cambridgeappfrontendimage:latest
-          docker run -d -p 80:80 --name cambridgeappfrontendcontainer ${{ secrets.DOCKER_USERNAME }}/cambridgeappfrontendimage
+          docker run -d -p 80:80 --name cambridgeappfrontendcontainer --rm ${{ secrets.DOCKER_USERNAME }}/cambridgeappfrontendimage
