@@ -6,8 +6,8 @@ on:
       - main
 
 jobs:
-  build-and-deploy:
-    runs-on: self-hosted
+  build:
+    runs-on: ubuntu-latest
 
     steps:
       - name: checkout code
@@ -47,6 +47,10 @@ jobs:
           docker stop cambridgeappfrontendimage || true
           docker rm cambridgeappfrontendimage || true
 
+  deploy:
+    needs: build
+    runs-on: selfhosted
+    steps:
       - name: Deploy Docker image
         run: |
           docker pull ${{secrets.DOCKER_USERNAME}}/cambridgeappfrontendimage:latest
