@@ -44,8 +44,8 @@ jobs:
 
       - name: run docker container
         run: |
-          docker stop cambridgeappfrontendimage || true
-          docker rm cambridgeappfrontendimage || true
+          docker stop ${{ secrets.DOCKER_USERNAME }}/cambridgeappfrontendimage || true
+          docker rm ${{ secrets.DOCKER_USERNAME }}/cambridgeappfrontendimage || true
 
   deploy:
     needs: build
