@@ -48,7 +48,7 @@ jobs:
           docker rm ${{ secrets.DOCKER_USERNAME }}/cambridgeappfrontendimage || true
       - name: Delete all unsued images
         run: |
-          docker images prune -a -f
+          docker image prune -a -f
 
   deploy:
     needs: build
