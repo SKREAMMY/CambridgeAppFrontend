@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: checkout code
-        run: actions/Checkout@v4
+        run: actions/checkout@v4
       - name: Create .env File
         run: |
           echo "VITE_APP_WEATHER_URL = https://api.openweathermap.org/data/2.5/weather?q=Cambridge,uk&units=metric&appid=" >> .env
