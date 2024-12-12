@@ -16,7 +16,7 @@ jobs:
         run: |
           echo "VITE_APP_WEATHER_URL = https://api.openweathermap.org/data/2.5/weather?q=Cambridge,uk&units=metric&appid=" >> .env
           echo "VITE_APP_WEATHER_API = 83581cb6f6a7f8ba2d9f33fb7898748e" >> .env
-          echo "VITE_APP_BASEURL = http://${{secrets.SERVER_IP}}:5000/" >> .env
+          echo "VITE_APP_BASEURL = http://${{secrets.SERVER_IP}}:5050/" >> .env
           echo "VITE_APP_NODEENV = production" >> .env
           echo "VITE_APP_GLOBAL_URL = news/global" >> .env
           echo "VITE_APP_LOCAL_URL = news/local" >> .env
