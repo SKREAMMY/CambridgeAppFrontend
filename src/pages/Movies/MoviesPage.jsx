@@ -17,8 +17,8 @@ const MoviesPage = () => {
 
   const search = useSelector((state) => state.search.query);
   const searchedMovies = useSelector((state) => state.search.movieResults);
-  console.log("query from movies ", search);
-  console.log("searched movies results ", searchedMovies);
+  // console.log("query from movies ", search);
+  // console.log("searched movies results ", searchedMovies);
 
   const renderdataonModal = (e) => {
     setModalData(e);
@@ -55,12 +55,9 @@ const MoviesPage = () => {
 
       let flag = filmTitle?.includes(searchableString);
       if (flag) {
-        console.log("film title ", filmTitle, searchableString);
-
         return data;
       }
     });
-    console.log("results from movies ", tempdata);
 
     // tempdata.map((data) => dispatch(setMovieResults(data)));
     dispatch(setMovieResults(tempdata));
@@ -226,7 +223,7 @@ const MoviesPage = () => {
                               <div className="row">
                                 {modalData.sessions?.[dateforModal]?.map(
                                   (alldata) => (
-                                    <>
+                                    <div>
                                       <div className="col-lg-6 col-md-6 col-sm-12">
                                         <b>{alldata.screenName}</b> -
                                         {alldata.startTime} - {alldata.endTime}{" "}
@@ -243,7 +240,7 @@ const MoviesPage = () => {
                                           Book now
                                         </a>
                                       </div>
-                                    </>
+                                    </div>
                                   )
                                 )}
                               </div>

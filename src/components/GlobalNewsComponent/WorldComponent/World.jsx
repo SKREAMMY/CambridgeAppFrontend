@@ -11,7 +11,7 @@ const World = () => {
   const dispatch = useDispatch();
 
   const search = useSelector((state) => state.search.query);
-  console.log("search from world ", search);
+  // console.log("search from world ", search);
 
   useEffect(() => {
     const ConvertToLowerCase = (data) => {
@@ -34,7 +34,7 @@ const World = () => {
         return data;
       }
     });
-    console.log("results from world ", tempdata);
+    // console.log("results from world ", tempdata);
 
     tempdata.map((data) => dispatch(setResults(data)));
   }, [search]);

@@ -15,12 +15,8 @@ import { store } from "./Store/Store";
 
 // changes to be done
 
-// to put a X button inside search to clear search
-// to create a local storage to put all local news
-// to put news is local storage and with using session storage and run a fetch after a certain period of time
 // make some UI changes on the movies modal regarding show booking
 // when the modal opens in movies page, the UI scrolls back for no reason.
-//
 
 const BannerModal = () => {
   const [show, setShow] = useState(false);

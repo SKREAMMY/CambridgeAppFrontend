@@ -11,7 +11,7 @@ const ScienceComponent = () => {
   const [science, setScience] = useState([]);
   const dispatch = useDispatch();
   const search = useSelector((state) => state.search.query);
-  console.log("search from science ", search);
+  // console.log("search from science ", search);
 
   useEffect(() => {
     const ConvertToLowerCase = (data) => {
@@ -34,7 +34,7 @@ const ScienceComponent = () => {
         return data;
       }
     });
-    console.log("results from science ", tempdata);
+    // console.log("results from science ", tempdata);
 
     tempdata.map((data) => dispatch(setResults(data)));
   }, [search]);

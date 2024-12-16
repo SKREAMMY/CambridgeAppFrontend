@@ -12,7 +12,6 @@ const Header = () => {
   const query = useSelector((state) => state.search.query);
   const searchQuery = useRef("");
   const [inputSearch, setInputSearch] = useState("");
-  console.log("header re rendering....");
 
   // A callback function to get the current weather using OpenWeather API
   const getWeather = async () => {
@@ -44,12 +43,10 @@ const Header = () => {
       setInputSearch(e);
       dispatch(searchString(e));
     }
-    // console.log("= search string on handleevent is ", e.target.value);
   };
 
   const handleSearch = () => {
     dispatch(searchString(query));
-    // searchQuery.current = "";
   };
 
   const handleKeyDown = (e) => {
@@ -62,10 +59,6 @@ const Header = () => {
     dispatch(clearResults());
     setInputSearch("");
   };
-
-  useEffect(() => {
-    console.log("from head...", query);
-  }, [query]);
 
   useEffect(() => {
     //Initial call to get the weather status while loading the page

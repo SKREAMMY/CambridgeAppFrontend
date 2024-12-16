@@ -29,8 +29,6 @@ const LocalNews = () => {
   }, []);
 
   useEffect(() => {
-    console.log("triggered", search);
-
     const ConvertToLowerCase = (data) => {
       return data?.toLowerCase();
     };
@@ -51,7 +49,6 @@ const LocalNews = () => {
         return data;
       }
     });
-    console.log("temp data is ", tempdata);
     dispatch(clearResults());
     tempdata.map((data) => dispatch(setResults(data)));
   }, [search]);

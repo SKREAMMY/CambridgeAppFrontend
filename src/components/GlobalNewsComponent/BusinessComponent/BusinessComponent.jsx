@@ -10,7 +10,7 @@ const BusinessComponent = () => {
   const [business, setBusiness] = useState([]);
   const dispatch = useDispatch();
   const search = useSelector((state) => state.search.query);
-  console.log("search from business ", search);
+  // console.log("search from business ", search);
 
   useEffect(() => {
     const ConvertToLowerCase = (data) => {
@@ -33,7 +33,7 @@ const BusinessComponent = () => {
         return data;
       }
     });
-    console.log("results from business ", tempdata);
+    // console.log("results from business ", tempdata);
 
     tempdata.map((data) => dispatch(setResults(data)));
   }, [search]);

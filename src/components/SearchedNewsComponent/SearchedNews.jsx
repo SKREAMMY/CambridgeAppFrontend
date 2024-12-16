@@ -6,8 +6,6 @@ import "./searchNews.css";
 const SearchedNews = () => {
   const results = useSelector((state) => state.search.results);
   const query = useSelector((state) => state.search.query);
-  console.log("=========== results are ", results);
-  console.log("=========== query are ", query, query.length);
 
   return (
     <>

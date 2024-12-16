@@ -9,7 +9,7 @@ const TopStories = () => {
   const [topStories, setTopStories] = useState([]);
   const dispatch = useDispatch();
   const search = useSelector((state) => state.search.query);
-  console.log("search from topstories ", search);
+  // console.log("search from topstories ", search);
 
   useEffect(() => {
     const ConvertToLowerCase = (data) => {
@@ -32,7 +32,7 @@ const TopStories = () => {
         return data;
       }
     });
-    console.log("results from top stories ", tempdata);
+    // console.log("results from top stories ", tempdata);
 
     tempdata.map((data) => dispatch(setResults(data)));
   }, [search]);

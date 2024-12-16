@@ -10,7 +10,7 @@ const HealthComponent = () => {
   const [health, setHealth] = useState([]);
   const dispatch = useDispatch();
   const search = useSelector((state) => state.search.query);
-  console.log("search from health ", search);
+  // console.log("search from health ", search);
 
   useEffect(() => {
     const ConvertToLowerCase = (data) => {
@@ -33,7 +33,7 @@ const HealthComponent = () => {
         return data;
       }
     });
-    console.log("results from health ", tempdata);
+    // console.log("results from health ", tempdata);
 
     tempdata.map((data) => dispatch(setResults(data)));
   }, [search]);
