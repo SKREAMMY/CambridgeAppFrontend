@@ -37,6 +37,8 @@ const MoviesPage = () => {
     // let fullurl = "https://" + data;
     // console.log(fullurl);
     // let res = fullurl.replace("vue", "myvue");
+    console.log("printing redirect url ", data);
+
     window.open(data);
   };
 

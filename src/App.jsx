@@ -36,14 +36,16 @@ const BannerModal = () => {
 
   return (
     <Modal show={show} onHide={handleClose} centered>
-      <Modal.Header className="bg-info">
-        <Modal.Title>Welcome to Our Website!</Modal.Title>
-      </Modal.Header>
       <Modal.Body>
-        <h4>
-          Some functionalities are yet to be added as this webpage is currently
-          undergoing development. Thank you for understanding!
-        </h4>
+        <img
+          className="workinprogressGIF"
+          src="https://media.giphy.com/media/lW6YSh8LVkaUhNnIfi/giphy.gif"
+          alt="Funny Work in Progress GIF"
+        />
+        <b>
+          Most of the heavy lifting is done—just a few final sprinkles of magic
+          left to add. Thanks for bearing with us!
+        </b>
       </Modal.Body>
       <Modal.Footer>
         <Button
