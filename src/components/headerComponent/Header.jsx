@@ -95,7 +95,7 @@ const Header = () => {
                         justify-content-center"
             >
               <div className="row navbarContent">
-                <div className="col-4">
+                <div className="col-6">
                   <Link
                     to="/"
                     className="nav-item nav-link nav-color"
@@ -104,7 +104,7 @@ const Header = () => {
                     Home
                   </Link>
                 </div>
-                <div className="col-4">
+                {/* <div className="col-4">
                   <Link
                     to="/movies"
                     className="nav-item nav-link nav-color"
@@ -112,8 +112,8 @@ const Header = () => {
                   >
                     Movies
                   </Link>
-                </div>
-                <div className="col-4">
+                </div> */}
+                <div className="col-6">
                   <Link
                     to="/links"
                     className="nav-item nav-link nav-color"
