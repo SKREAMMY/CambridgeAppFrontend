@@ -44,11 +44,11 @@ jobs:
 
       - name: run docker container
         run: |
-          docker stop ${{ secrets.DOCKER_USERNAME }}/cambridgeappfrontendimage || true
-          docker rm ${{ secrets.DOCKER_USERNAME }}/cambridgeappfrontendimage || true
+          sudo docker stop ${{ secrets.DOCKER_USERNAME }}/cambridgeappfrontendimage || true
+          sudo docker rm ${{ secrets.DOCKER_USERNAME }}/cambridgeappfrontendimage || true
       - name: Delete all unsued images
         run: |
-          docker image prune -a -f
+          sudo docker image prune -a -f
 
   deploy:
     needs: build
@@ -56,7 +56,7 @@ jobs:
     steps:
       - name: Deploy Docker image
         run: |
-          docker pull ${{secrets.DOCKER_USERNAME}}/cambridgeappfrontendimage:latest
+          sudo docker pull ${{secrets.DOCKER_USERNAME}}/cambridgeappfrontendimage:latest
 
       - name: Remove existing docker container if already exists.
         shell: /usr/bin/bash -e {0}
@@ -67,9 +67,9 @@ jobs:
           echo "Container RC '$RUNNING_CONTAINER'"
           if [ -n "$RUNNING_CONTAINER" ]; then
             echo "Container is runnning, stopping and removing"
-            docker stop $CONTAINER_NAME
-            docker rm $CONTAINER_NAME || true
+            sudo docker stop $CONTAINER_NAME || true
+            sudo docker rm $CONTAINER_NAME || true
           fi
       - name: Run the container
         run: |
-          docker run -d -p 80:80 --name cambridgeappfrontendcontainer --rm ${{ secrets.DOCKER_USERNAME }}/cambridgeappfrontendimage
+          sudo docker run -d -p 80:80 --name cambridgeappfrontendcontainer --rm ${{ secrets.DOCKER_USERNAME }}/cambridgeappfrontendimage
