@@ -150,7 +150,7 @@ const Header = () => {
                   <button
                     id="search_btn"
                     onClick={() => handleSearch()}
-                    className="btn "
+                    className="btn srchbutton"
                   >
                     <i className="fa fa-search" aria-hidden="true"></i>
                   </button>

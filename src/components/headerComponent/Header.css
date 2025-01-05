@@ -1,87 +1,126 @@
-.brandName {
-    margin-left: 20px;
-}
-
-.navbar-nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.navbar-nav {
-    padding: 0px;
-}
-
-.inputField {
-    border: none !important;
-    outline: none !important;
-    border-radius: 5px;
-    padding-left: 5px;
-}
-
-.clear {
-    background-color: white;
-
-
-}
-
-button {
-    border: none;
-}
-
-.clearbutton {
-    outline: none !important;
-    border: none !important;
-}
-
-.search {
-    display: flex;
-    align-items: center;
-}
-
-
-.searchInput {
-    width: 80%;
-
-}
-
-.loginButton {
-    margin-right: 5px;
-}
-
-.weather {
-    margin-left: 10px;
-}
-
-.weather_icon {
-    height: 40px;
-    width: 40px;
-}
-
-.degrees {
-    font-size: 30px;
-    font-weight: bold;
-}
-
-.search {
-    background-color: rgb(86, 163, 86);
-    border-radius: 5px;
-}
-
-.menu-toggler {
-    margin-right: 20px;
-}
-
-.input-group {
-    width: auto;
-    flex-wrap: nowrap !important;
-    justify-content: center !important;
-}
-
 .navbar-bgcolor {
-    background-color: rgb(72, 72, 72);
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    /* Gradient background */
+    padding: 10px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .nav-color {
-    color: white !important;
+    color: #fff !important;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-color:hover {
+    color: #ffcc00 !important;
+}
+
+.brandName {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-left: 10px;
+    color: #fff !important;
+    transition: color 0.3s ease;
+}
+
+.brandName:hover {
+    color: #ffcc00 !important;
+}
+
+.input-group {
+    flex-wrap: nowrap !important;
+}
+
+.navbar-toggler {
+    background-color: #fff;
+    border: none;
+}
+
+.menu-toggler .navbar-toggler-icon {
+    color: #fff;
+}
+
+.inputField {
+    border: 2px solid #fff;
+    border-radius: 50px;
+    padding: 8px 16px;
+    width: 100%;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+.inputField:focus {
+    border: 2px solid #ffcc00 !important;
+}
+
+.clearbutton,
+.search {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.srchbutton,
+.clearbutton {
+    height: 100%;
+}
+
+.srchbutton {
+    background-color: #6a11cb !important;
+}
+
+.search:hover {
+    color: #ffcc00;
+    transform: scale(1.1);
+}
+
+.clearbutton:hover {
+    color: red !important;
+    transform: scale(1.1);
+}
+
+.weather {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.weather_icon {
+    width: 30px;
+    margin-right: 8px;
+}
+
+.degrees {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.navbarContent a {
+    transition: all 0.3s ease-in-out;
+}
+
+.navbarContent a:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .navbar-bgcolor {
+        padding: 15px;
+    }
+
+    .brandName {
+        font-size: 1.5rem;
+    }
+
+    .degrees {
+        font-size: 1rem;
+    }
+
+    .inputField {
+        font-size: 0.9rem;
+    }
 }
