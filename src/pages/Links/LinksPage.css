@@ -1,26 +1,72 @@
-.linkpage {
-    padding: 10px;
+/* LinksPage Wrapper */
+.LinksPage {
+    padding: 20px;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    border-radius: 15px;
+    color: #ffffff;
 }
 
-.bin-card {
-
-    align-items: center;
-    text-align: center;
-    margin-top: 30px;
+/* Card Styling */
+.linkCard {
+    background: #ffffff;
+    color: #333333;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.bin-body {
-    align-items: center;
-    height: 220px;
+.linkCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-.icon {
-    font-size: 100px;
+.linkCard .card-body {
+    padding: 20px;
 }
 
-.linkName {
-    font-style: italic;
+.linkCard .icon {
+    font-size: 2.5rem;
+    color: #2575fc;
+    margin-bottom: 15px;
+    transition: color 0.3s;
+}
+
+.linkCard .icon:hover {
+    color: #ffcc00;
+}
+
+.linkCard h4 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333333;
     text-decoration: none;
-    color: darkslategray;
-    padding: 20px 0 20px 0;
+    margin: 0;
+}
+
+.linkCard a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s;
+}
+
+.linkCard a:hover h4 {
+    color: #ffcc00;
+}
+
+/* Responsive Grid */
+@media (max-width: 768px) {
+    .linkCard .icon {
+        font-size: 2rem;
+    }
+
+    .linkCard h4 {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .linkCard {
+        margin-bottom: 15px;
+    }
 }

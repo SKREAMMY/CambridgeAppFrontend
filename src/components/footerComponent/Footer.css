@@ -6,6 +6,10 @@
     font-size: 0.9rem;
     border-radius: 15px 15px 0px 0px;
     margin-top: 10px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 /* Footer Text */
