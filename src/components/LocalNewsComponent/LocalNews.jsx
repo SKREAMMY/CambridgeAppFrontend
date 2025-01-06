@@ -69,7 +69,12 @@ const LocalNews = () => {
               style={{ transform: `translateX(-${carouselIndex * 100}%)` }}
             >
               {carousel.map((item, index) => (
-                <div className="carouselSlide" key={index}>
+                <Link
+                  to={item?.link}
+                  target="_blank"
+                  className="carouselSlide"
+                  key={index}
+                >
                   <img
                     src={item?.enclosure}
                     alt="News"
@@ -79,7 +84,7 @@ const LocalNews = () => {
                     <h3>{item?.title || "News Title"}</h3>
                     <p>{item?.description || "News description goes here."}</p>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
             <button className="carouselControl left" onClick={prevSlide}>
@@ -100,23 +105,25 @@ const LocalNews = () => {
                 className="col-lg-4 col-md-12 col-sm-12 flippableCard"
                 key={i}
               >
-                <div className="cardInner">
-                  {/* Front of the Card */}
-                  <div className="cardFront">
-                    <img
-                      src={news?.enclosure}
-                      alt="News"
-                      className="newsCardImage"
-                    />
-                    <div className="newsCardContent">
-                      <h3>{news?.title}</h3>
+                <Link to={news?.link} target="_blank">
+                  <div className="cardInner">
+                    {/* Front of the Card */}
+                    <div className="cardFront">
+                      <img
+                        src={news?.enclosure}
+                        alt="News"
+                        className="newsCardImage"
+                      />
+                      <div className="newsCardContent">
+                        <h3>{news?.title}</h3>
+                      </div>
+                    </div>
+                    {/* Back of the Card */}
+                    <div className="cardBack">
+                      <h5>{news?.description}</h5>
                     </div>
                   </div>
-                  {/* Back of the Card */}
-                  <div className="cardBack">
-                    <h5>{news?.description}</h5>
-                  </div>
-                </div>
+                </Link>
               </div>
             ))}
           </div>
