@@ -27,7 +27,7 @@ const Footer = () => {
             <ul className="social-links list-unstyled d-flex justify-content-center justify-content-lg-end">
               <li className="ms-3">
                 <a
-                  href="https://www.linkedin.com/in/kiran-k-p-6716a018b/"
+                  href="https://www.linkedin.com/in/kiran-kumaravel-pillai-6716a018b/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="social-icon"
