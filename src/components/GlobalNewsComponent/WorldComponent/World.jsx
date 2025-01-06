@@ -57,32 +57,32 @@ const World = () => {
 
   return (
     <div>
-      <div className="container-fluid LocalNews">
-        <div className="row localNewsBody">
-          <div className="row localNewsList">
-            {worldStories.map((news, i) => (
+      <div className="container-fluid worldStories">
+        <div className="row worldStoriesBody">
+          <div className="worldStoriesList">
+            {/* {worldStories.map((news, i) => (
               <div
                 className={
                   i % 3 === 0
-                    ? "col-lg-6 col-md-12 col-sm-12 allLocalNews background-green"
-                    : "col-lg-6 col-md-12 col-sm-12 allLocalNews"
+                    ? "col-lg-6 col-md-12 col-sm-12 allworldStories background-green"
+                    : "col-lg-6 col-md-12 col-sm-12 allworldStories"
                 }
                 key={i}
               >
-                <div className="localNewsImageContainer">
+                <div className="worldStoriesImageContainer">
                   <div className="row localImageCard">
                     <div className="col-lg-6 col-md-6 col-sm-12">
                       <Link to={news?.link} target="_blank">
                         <img
                           src={news?.mediaThumbnail["url"]}
                           alt=""
-                          className="localNewsImage"
+                          className="worldStoriesImage"
                         />
                       </Link>
                     </div>
                     <div className="col-lg-6 col-md-6 col-sm-12">
                       <a
-                        className="localNewsDescription"
+                        className="worldStoriesDescription"
                         href={news?.link}
                         target="_blank"
                       >
@@ -92,7 +92,35 @@ const World = () => {
                   </div>
                 </div>
               </div>
-            ))}
+            ))} */}
+            <div className="row g-3">
+              {worldStories.map((news, i) => (
+                <div
+                  className="col-lg-4 col-md-12 col-sm-12 flippableCard"
+                  key={i}
+                >
+                  <Link to={news?.link} target="blank">
+                    <div className="cardInner">
+                      {/* Front of the Card */}
+                      <div className="cardFront">
+                        <img
+                          src={news?.mediaThumbnail["url"]}
+                          alt="News"
+                          className="newsCardImage"
+                        />
+                        <div className="newsCardContent">
+                          <h3>{news?.title}</h3>
+                        </div>
+                      </div>
+                      {/* Back of the Card */}
+                      <div className="cardBack">
+                        <h5>{news?.description}</h5>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

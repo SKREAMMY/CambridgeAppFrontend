@@ -11,7 +11,7 @@ const HomePage = () => {
 
       <div className="HomePageContainer">
         <ul
-          className="nav nav-pills justify-content-center m-3"
+          className="nav nav-pills justify-content-center "
           id="pills-tab"
           role="tablist"
         >

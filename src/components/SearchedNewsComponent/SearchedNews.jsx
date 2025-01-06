@@ -14,7 +14,7 @@ const SearchedNews = () => {
           <h1>No data found</h1>
         ) : (
           <div className="row">
-            {results.map((news, i) => (
+            {/* {results.map((news, i) => (
               <div
                 className="col-lg-4 col-md-12 col-sm-12 allLocalNews"
                 key={i}
@@ -41,6 +41,33 @@ const SearchedNews = () => {
                     </div>
                   </div>
                 </div>
+              </div>
+            ))} */}
+
+            {results.map((news, i) => (
+              <div
+                className="col-lg-4 col-md-12 col-sm-12 flippableCard"
+                key={i}
+              >
+                <Link to={news?.link} target="blank">
+                  <div className="cardInner">
+                    {/* Front of the Card */}
+                    <div className="cardFront">
+                      <img
+                        src={news?.mediaThumbnail["url"]}
+                        alt="News"
+                        className="newsCardImage"
+                      />
+                      <div className="newsCardContent">
+                        <h3>{news?.title}</h3>
+                      </div>
+                    </div>
+                    {/* Back of the Card */}
+                    <div className="cardBack">
+                      <h5>{news?.description}</h5>
+                    </div>
+                  </div>
+                </Link>
               </div>
             ))}
           </div>

@@ -58,8 +58,8 @@ const ScienceComponent = () => {
   return (
     <div>
       <div className="row localNewsBody">
-        <div className="row localNewsList">
-          {science.map((news, i) => (
+        <div className="localNewsList">
+          {/* {science.map((news, i) => (
             <div
               className={
                 i % 3 === 0
@@ -91,7 +91,35 @@ const ScienceComponent = () => {
                 </div>
               </div>
             </div>
-          ))}
+          ))} */}
+          <div className="row g-3">
+            {science.map((news, i) => (
+              <div
+                className="col-lg-4 col-md-12 col-sm-12 flippableCard"
+                key={i}
+              >
+                <Link to={news?.link} target="blank">
+                  <div className="cardInner">
+                    {/* Front of the Card */}
+                    <div className="cardFront">
+                      <img
+                        src={news?.mediaThumbnail["url"]}
+                        alt="News"
+                        className="newsCardImage"
+                      />
+                      <div className="newsCardContent">
+                        <h3>{news?.title}</h3>
+                      </div>
+                    </div>
+                    {/* Back of the Card */}
+                    <div className="cardBack">
+                      <h5>{news?.description}</h5>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

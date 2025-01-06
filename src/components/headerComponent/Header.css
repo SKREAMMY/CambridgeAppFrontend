@@ -1,3 +1,8 @@
+.navbar {
+    border-radius: 0px 0px 15px 15px;
+}
+
+
 .navbar-bgcolor {
     background: linear-gradient(90deg, #6a11cb, #2575fc);
     /* Gradient background */

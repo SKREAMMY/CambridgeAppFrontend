@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./localNews.css";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { clearResults, setResults } from "../../SearchSlice/searchSlice";
 
 const LocalNews = () => {
   const [localNews, setlocalNews] = useState([]);
   const [carousel, setCarousel] = useState([]);
   const [carouselIndex, setCarouselIndex] = useState(0);
+  const dispatch = useDispatch();
+  const search = useSelector((state) => state.search.query);
 
   useEffect(() => {
     async function fetchLocalNews() {
@@ -19,6 +24,31 @@ const LocalNews = () => {
     }
     fetchLocalNews();
   }, []);
+
+  useEffect(() => {
+    const ConvertToLowerCase = (data) => {
+      return data?.toLowerCase();
+    };
+
+    if (search === "") {
+      return;
+    }
+
+    const tempdata = localNews.filter((data) => {
+      let title = ConvertToLowerCase(data.title);
+      let description = ConvertToLowerCase(data.description);
+      let searchableString = ConvertToLowerCase(search);
+
+      let flag =
+        title?.includes(searchableString) ||
+        description?.includes(searchableString);
+      if (flag) {
+        return data;
+      }
+    });
+    dispatch(clearResults());
+    tempdata.map((data) => dispatch(setResults(data)));
+  }, [search]);
 
   const nextSlide = () => {
     setCarouselIndex((prev) => (prev === carousel.length - 1 ? 0 : prev + 1));

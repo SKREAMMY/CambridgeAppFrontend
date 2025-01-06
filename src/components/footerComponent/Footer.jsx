@@ -1,38 +1,55 @@
 import React from "react";
 import "./Footer.css";
-import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <>
-      <footer className="row d-flex justify-content-center align-items-center py-3  border-top bg-dark text-white">
-        <div className="col-lg-4 col-md-12 col-sm-12 d-flex align-items-center px-5">
-          <a
-            href="/"
-            className="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1"
-          ></a>
-          <span className="mb-3 mb-md-0">&copy; Kiran K P, Inc</span>
-        </div>
-        <div className="col-lg-4 col-md-12 col-sm-12 d-flex align-items-center justify-content-center info">
-          Data provided by BBC and Cambridgeshire-live
-        </div>
-        <div className="col-lg-4 col-md-12 col-sm-12 d-flex align-items-center justify-content-center info">
-          <ul className="nav col-lg-12 col-md-12 col-sm-12 justify-content-end list-unstyled d-flex footer-links px-5">
-            <li className="ms-3">
-              <Link to="https://www.linkedin.com/in/kiran-k-p-6716a018b/">
-                <i className="fa fa-brands fa-linkedin"></i>
-              </Link>
-            </li>
+    <footer className="footer">
+      <div className="container">
+        <div className="row align-items-center py-4">
+          {/* Left Section */}
+          <div className="col-lg-4 col-md-12 text-center text-lg-start">
+            <p className="footer-text">
+              &copy; {new Date().getFullYear()} Kiran K P, Inc. All rights
+              reserved.
+            </p>
+          </div>
 
-            <li className="ms-3">
-              <Link to="https://www.instagram.com/kiran_kumararavel/">
-                <i className="fa fa-brands fa-instagram"></i>
-              </Link>
-            </li>
-          </ul>
+          {/* Middle Section */}
+          <div className="col-lg-4 col-md-12 text-center">
+            <p className="footer-text">
+              Data provided by <span className="highlight">BBC</span> and{" "}
+              <span className="highlight">Cambridgeshire-live</span>.
+            </p>
+          </div>
+
+          {/* Right Section */}
+          <div className="col-lg-4 col-md-12 text-center text-lg-end">
+            <ul className="social-links list-unstyled d-flex justify-content-center justify-content-lg-end">
+              <li className="ms-3">
+                <a
+                  href="https://www.linkedin.com/in/kiran-k-p-6716a018b/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-icon"
+                >
+                  <i className="fa fa-linkedin"></i>
+                </a>
+              </li>
+              <li className="ms-3">
+                <a
+                  href="https://www.instagram.com/kiran_kumararavel/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-icon"
+                >
+                  <i className="fa fa-instagram"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
-      </footer>
-    </>
+      </div>
+    </footer>
   );
 };
 
